@@ -1,0 +1,35 @@
+.border {
+  border: 2px solid blue;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+/* 小要素に対してfloatを指定すると親要素が高さを認識できず、レイアウトが乱れる */
+.left {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+}
+.right {
+  float: right;
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
+/* 要素の最後にafterで擬似要素を追加 */
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/* このセレクタは使ってない */
+.clear {
+  clear: both;
+  height: 10px;
+  background-color: lightgreen;
+}
+.bottom {
+  width: 100%;
+  height: 30px;
+  background-color: green;
+}

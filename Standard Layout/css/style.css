@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+html {
+  /* 主要なブラウザのデフォルトフォントサイズが16pxなので、%換算で10px相当に変換 */
+  font-size: 62.5%;
+}
+body {
+  color: #333;
+  /* rem = root(html)要素のn倍という意味 */
+  /* em = 直前の親要素のn倍 */
+  font-size: 1.2rem;
+  /* フォント名に半角スペースや全角文字を含む場合はシングルorダブルクォーテーションで囲む */
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+/* アスタリスクは全称セレクタ */
+/* ::before/afterは要素の前/後にスタイル要素を適用する擬似クラス */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+a:link, a:visited, a:hover, a:active {
+  color: #d03c56;
+  text-decoration: none;
+}
+.header {
+  width: 100%;
+  padding: 28px 0 10px;
+  /* 横方向に背景画像を繰り返し表示 */
+  /* なおimageやrepeatなどのショートハンドプロパティを個別に設定したい場合は後に記述すること */
+  background: url('../images/bg-header.gif') repeat-x;
+  box-shadow: 0 0 10px 1px #e3e3e3;
+}
+.wrapper {
+  width: 970px;
+  margin: 30px auto 40px;
+}
+
+/* wrapper用のclearfix */
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.main {
+  display: block;
+  float: left;
+  width: 660px;
+}
+.sidemenu {
+  float: right;
+  width: 275px;
+}
+.footer {
+  width: 100%;
+}
+
+/* 要素のレイアウトを確認するCSS
+.header, .main, .sidemenu, .footer {
+  border: 1px solid #aaa;
+  background-color: #ccc;
+}
+.header, .footer {
+  height: 100px;
+}
+.main, .sidemenu {
+  height: 500px;
+}
+*/
