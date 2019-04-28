@@ -23,11 +23,34 @@ a:link, a:visited, a:hover, a:active {
 }
 .header {
   width: 100%;
+  /* headerの中のロゴの位置を調整(ロゴ(小要素)にmargin-topを指定するとmarginが相殺されてheaderの上側に余白が出来てしまう) */
   padding: 28px 0 10px;
   /* 横方向に背景画像を繰り返し表示 */
   /* なおimageやrepeatなどのショートハンドプロパティを個別に設定したい場合は後に記述すること */
   background: url('../images/bg-header.gif') repeat-x;
+  /* [右方向のずれ][下方向のずれ][ぼかしの大きさ][拡張の大きさ][影の色] */
   box-shadow: 0 0 10px 1px #e3e3e3;
+}
+.logo {
+  width: 225px;
+  height: 56px;
+  margin: 0 auto;
+  background: url('../images/note_to_self_clear.png') no-repeat;
+  /* 画像の上のテキストを非表示にするスタイル */
+  /* 3.要素外の要素を非表示にする */
+  overflow-x: hidden;
+  /* 1.テキストの前に改行を入れる */
+  text-indent: 100%;
+  /* 2.テキストの折返しを無くし、logo要素の外側に押し出す */
+  white-space: nowrap;
+}
+.logo a {
+  /* logo要素に対してa要素の大きさを一致させる */
+  /* 2.a要素はinlineなのでblockに変更 */
+  display: block;
+  /* 1.親要素(logo)に対して100%の大きさ */
+  width: 100%;
+  height: 100%;
 }
 .wrapper {
   width: 970px;
