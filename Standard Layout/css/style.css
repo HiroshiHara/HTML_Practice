@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+/* ベースとなるCSSを定義 */
 html {
   /* 主要なブラウザのデフォルトフォントサイズが16pxなので、%換算で10px相当に変換 */
   font-size: 62.5%;
@@ -21,6 +21,8 @@ a:link, a:visited, a:hover, a:active {
   color: #d03c56;
   text-decoration: none;
 }
+/* ここまでベースとなるCSS */
+
 .header {
   width: 100%;
   /* headerの中のロゴの位置を調整(ロゴ(小要素)にmargin-topを指定するとmarginが相殺されてheaderの上側に余白が出来てしまう) */
@@ -35,7 +37,7 @@ a:link, a:visited, a:hover, a:active {
   width: 225px;
   height: 56px;
   margin: 0 auto;
-  background: url('../images/note_to_self_clear.png') no-repeat;
+  background: url('../images/logo.png') no-repeat;
   /* 画像の上のテキストを非表示にするスタイル */
   /* 3.要素外の要素を非表示にする */
   overflow-x: hidden;
@@ -51,6 +53,34 @@ a:link, a:visited, a:hover, a:active {
   /* 1.親要素(logo)に対して100%の大きさ */
   width: 100%;
   height: 100%;
+}
+.global-nav {
+  margin-top: 15px;
+  /* リンクを親要素に対して中央揃えに */
+  text-align: center;
+}
+.global-nav .nav-item {
+  /* リンクを横並びに */
+  display: inline-block;
+  margin: 0 10px;
+}
+.global-nav .nav-item a {
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 8px;
+  color: #666;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  transition: 0.15s;
+}
+/* クラス名にスペースを開けず指定した場合、「AとBのクラス名が両方ついた要素」となる */
+.global-nav .nav-item.active a,
+.global-nav .nav-item a:hover {
+  background-color: #d03c56;
+  color: #fff;
 }
 .wrapper {
   width: 970px;
