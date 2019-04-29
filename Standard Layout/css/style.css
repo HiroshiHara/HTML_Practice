@@ -15,6 +15,7 @@ body {
 /* アスタリスクは全称セレクタ */
 /* ::before/afterは要素の前/後にスタイル要素を適用する擬似クラス */
 *, *::before, *::after {
+  /* 要素の幅と高さがボーダーエリア基準となるようにする */
   box-sizing: border-box;
 }
 a:link, a:visited, a:hover, a:active {
@@ -82,22 +83,103 @@ a:link, a:visited, a:hover, a:active {
   background-color: #d03c56;
   color: #fff;
 }
+
 .wrapper {
   width: 970px;
   margin: 30px auto 40px;
 }
-
 /* wrapper用のclearfix */
 .clearfix::after {
   content: '';
   display: block;
   clear: both;
 }
-
 .main {
   display: block;
   float: left;
   width: 660px;
+}
+/* セクション区切りのための見出し(hot-topicとarticles)を隠す */
+.hidden {
+  display: none;
+}
+.hot-topic {
+  display: block;
+  height: 300px;
+  margin-bottom: 30px;
+  /* [右方向のずれ][下方向のずれ][ぼかしの大きさ][拡張の大きさ][影の色] */
+  box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.15s;
+}
+.hot-topic:hover {
+  opacity: 0.85;
+}
+/* hot-topicのimage部分 */
+.hot-topic .image {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+/* hot-topicのcontent部分 */
+.hot-topic .content {
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 100%;
+  padding: 105px 25px 0;
+  background-color: #2d3d54;
+  line-height: 1.6;
+}
+.hot-topic .title {
+  margin-bottom: 15px;
+  color: #fff;
+  font-weight: normal;
+  font-size: 2.0rem;
+}
+.hot-topic .desc {
+  color: #ddc;
+}
+.hot-topic .date {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width 140px;
+  padding: 4px;
+  background-color: #fff;
+  color: #2d3d54;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  /* line-heightを数値のみで指定で要素のfont-sizeにこの値を掛けた値が行の高さとなる */
+  line-height: 1;
+}
+.heading {
+  padding: 10px 12px;
+  background: url('../images/bg-slash.gif');
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+}
+.scroll-list {
+  /* max-heightで子要素の高さに応じて親要素の大きさも縮む */
+  max-height: 220px;
+  /* 子要素の高さが親要素を上回った場合、y方向へのスクロールバーが表示される */
+  overflow-y: auto;
+  margin-bottom: 30px;
+  list-style-type: none;
+}
+.scroll-list .scroll-item a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  transition: background-color 0.1s;
+}
+/* scroll-itemの偶数番目のa要素のみに適用 */
+.scroll-list .scroll-item:nth-of-type(even) a {
+  background: url('../images/bg-slash.gif');
+}
+.scroll-list .scroll-item a:hover {
+  background-color: #fafaf8;
 }
 .sidemenu {
   float: right;
