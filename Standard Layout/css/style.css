@@ -320,6 +320,7 @@ a:link, a:visited, a:hover, a:active {
   opacity: 0.8;
 }
 .ranking .image {
+  position: absolute;
   width: 55px;
   height: 55px;
 }
@@ -333,21 +334,27 @@ a:link, a:visited, a:hover, a:active {
   line-height: 1.5;
 }
 .ranking .order {
+  position: relative;
+  left: 2px;
+  bottom: 7px;
   display: inline-block;
   width: 18px;
   height: 18px;
-  margin: 0 10px;
+  margin-left: 42px;
+  margin-right: 10px;
   border: 1px solid #ccc;
   color: #aaa;
+  background-color: #fff;
   /* 親要素のベースラインから20pxだけ上 */
   vertical-align: 20px;
   text-align: center;
   font-weight: bold;
   line-height: 16px;
+  border-radius: 45px;
   /* transformプロパティはSafari8以下とIE9でベンダープレフィックスが必要 */
-  -webkit-transform: rotate(45deg);
+  /* -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  transform: rotate(45deg); */
 }
 /* 1~3位のアイコンをリセット */
 .ranking .ranking-item:nth-of-type(1) .order,
@@ -375,9 +382,9 @@ a:link, a:visited, a:hover, a:active {
   counter-increment: ranking;
   display: inline-block;
   font-size: 1.0rem;
-  -webkit-transform: rotate(-45deg);
+  /* -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  transform: rotate(-45deg); */
 }
 .documents {
   /* 上が10px, 左右が10px, 下が30px */
