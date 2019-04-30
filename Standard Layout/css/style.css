@@ -437,6 +437,41 @@ a:link, a:visited, a:hover, a:active {
 }
 .footer {
   width: 100%;
+  padding: 20px 0 30px;
+  background: #2d3d54 url('../images/bg-footer.gif');
+  color: #fff;
+}
+/* wrapperと同じ幅(970px)にして、中央揃えにした後text-alignで右揃えでwrapperの右端と揃う */
+.horizontal-list {
+  width: 970px;
+  margin: 0 auto;
+  text-align: right;
+  /* inline-blockで並べた要素の間には改行文字による隙間ができるので、font-size0で打ち消し */
+  font-size: 0;
+}
+.horizontal-list .horizontal-item {
+  display: inline-block;
+  padding: 0 15px;
+  letter-spacing: 1px;
+}
+/* .horizontal-listの中で.horizontal-itemの直後に置かれたhorizontal-itemを指す */
+/* horizontal-itemが縦線で区切られるようにする */
+.horizontal-list .horizontal-item + .horizontal-item {
+  border-left: 1px solid #bbb;
+}
+.horizontal-list .horizontal-item a {
+  border-bottom: 1px dashed #777;
+  color: #bbb;
+  font-size: 1.1rem;
+  transition: color 0.15s;
+}
+.horizontal-list .horizontal-item a:hover {
+  color: #ddd;
+}
+.copyright {
+  margin: 30px;
+  text-align: center;
+  letter-spacing: 1px;
 }
 
 /* 要素のレイアウトを確認するCSS
