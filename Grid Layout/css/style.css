@@ -35,6 +35,7 @@ a:link, a:visited, a:hover, a:active {
   display: block; /* img要素はinlineなので横並びにならないようにblock要素にする */
   width: 100%; /* 親要素のpaddingを除いた幅一杯に広げる */
   height: 109px; /* Masonry実行前に画像分の高さを取得しておく */
+  /* 画像の高さが事前に分からない場合はMasonryの実行を関数化しwindow.onloadで実行すること */
 }
 .item-m .image {
   height: 146px; /* Masonry実行前に画像分の高さを取得しておく */
@@ -89,4 +90,43 @@ a:link, a:visited, a:hover, a:active {
 .item-breaktime,
 .item-breaktime .category::before {
   border-color: #c1efff;
+}
+.header {
+  padding: 25px 0;
+  border-bottom: none;
+  text-align: center;
+}
+.logo {
+  width: 136px;
+  height: 136px;
+  transition: -webkit-transform 0.3s; /* Safari8以下のベンダープレフィックス */
+  transition: transform 0.3s;
+}
+.logo:hover {
+  -webkit-transform: rotate(360deg); /* Safari8以下のベンダープレフィックス */
+  transform: rotate(360deg);
+}
+.nav {
+  margin: 35px auto 10px;
+}
+.nav-item {
+  margin-top: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.nav-item a {
+  display: inline-block; /* inlineだと幅を持たせられず、blockだと.nav-item分の幅まで広がってしまう */
+}
+.nav-item a::after {
+  content: ''; /* 無いとアニメーションが発生しない */
+  display: block; /* 無いとアニメーションが発生しない */
+  width: 0; /* ホバーしてないときは下線非表示 */
+  margin: 8px auto 0;
+  border-bottom: 1px solid #7c5119;
+  transition: width 0.3s ease-in-out; /* タイミング関数でwidthをアニメーション */
+}
+.nav-item a:hover::after {
+  width: 100%;
 }
