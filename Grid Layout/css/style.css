@@ -25,9 +25,22 @@ a:link, a:visited, a:hover, a:active {
   border-radius: 5px;
   background-color: #fff;
 }
+.item-m {
+  width: 364px;
+}
+.item-l {
+  width: 732px;
+}
 .item .image {
   display: block; /* img要素はinlineなので横並びにならないようにblock要素にする */
-  width: 100% /* 親要素のpaddingを除いた幅一杯に広げる */
+  width: 100%; /* 親要素のpaddingを除いた幅一杯に広げる */
+  height: 109px; /* Masonry実行前に画像分の高さを取得しておく */
+}
+.item-m .image {
+  height: 146px; /* Masonry実行前に画像分の高さを取得しておく */
+}
+.item-l .image {
+  height: 403px; /* Masonry実行前に画像分の高さを取得しておく */
 }
 .item .category {
   margin: 15px 9px 10px; /*  下のmarginが狭いのはp要素のline-heightが足されるのを予め考慮してのこと */
