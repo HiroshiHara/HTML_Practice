@@ -3,20 +3,25 @@
 html {
   font-size: 62.5%;
 }
+
 body {
-  padding: 30px; /* ウィンドウ枠とコンテンツの間隔 */
+  padding: 30px;
+  /* ウィンドウ枠とコンテンツの間隔 */
   background-color: #f6f7fb;
   color: #333;
   font-size: 1.2rem;
   font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
 a:link, a:visited, a:hover, a:active {
   color: #7c5119;
   text-decoration: none;
 }
+
 .item {
   width: 180px;
   margin-bottom: 4px;
@@ -24,91 +29,177 @@ a:link, a:visited, a:hover, a:active {
   border-bottom: 3px solid;
   border-radius: 5px;
   background-color: #fff;
+  overflow: hidden;
 }
+
 .item-m {
   width: 364px;
 }
+
 .item-l {
   width: 732px;
 }
+
 .item .image {
-  display: block; /* img要素はinlineなので横並びにならないようにblock要素にする */
-  width: 100%; /* 親要素のpaddingを除いた幅一杯に広げる */
-  height: 109px; /* Masonry実行前に画像分の高さを取得しておく */
+  display: block;
+  /* img要素はinlineなので横並びにならないようにblock要素にする */
+  width: 100%;
+  /* 親要素のpaddingを除いた幅一杯に広げる */
+  height: 109px;
+  /* Masonry実行前に画像分の高さを取得しておく */
   /* 画像の高さが事前に分からない場合はMasonryの実行を関数化しwindow.onloadで実行すること */
 }
+
 .item-m .image {
-  height: 146px; /* Masonry実行前に画像分の高さを取得しておく */
+  height: 146px;
+  /* Masonry実行前に画像分の高さを取得しておく */
 }
+
 .item-l .image {
-  height: 403px; /* Masonry実行前に画像分の高さを取得しておく */
+  height: 403px;
+  /* Masonry実行前に画像分の高さを取得しておく */
 }
+
 .item .category {
-  margin: 15px 9px 10px; /*  下のmarginが狭いのはp要素のline-heightが足されるのを予め考慮してのこと */
+  margin: 15px 9px 10px;
+  /*  下のmarginが狭いのはp要素のline-heightが足されるのを予め考慮してのこと */
   color: #aaa;
   letter-spacing: 1px;
   font-family: "Trebuchet MS", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }
+
 .item .category::before {
-  content: ''; /* before疑似要素を表示するためcontentプロパティに空文字を指定 */
-  display: inline-block; /* 円の横幅と高さの指定を有効にするためinline-blockに指定(疑似要素のdisplayはデフォルトでinline) */
+  content: '';
+  /* before疑似要素を表示するためcontentプロパティに空文字を指定 */
+  display: inline-block;
+  /* 円の横幅と高さの指定を有効にするためinline-blockに指定(疑似要素のdisplayはデフォルトでinline) */
   width: 19px;
   height: 19px;
   margin-right: 5px;
   border: 2px solid;
-  border-radius: 50%; /* カテゴリ名の左に円を表示 */
-  vertical-align: -5px; /* 親要素(category)のベールラインからの距離 */
+  border-radius: 50%;
+  /* カテゴリ名の左に円を表示 */
+  vertical-align: -5px;
+  /* 親要素(category)のベールラインからの距離 */
 }
+
 .item .description {
   margin: 10px;
   line-height: 1.5;
 }
-.item > a {
-  display: block; /* .itemは8pxのpaddingと3pxのmargin-bottomを持つので */
-  margin: -8px -8px -11px; /* a要素の効果が.itemのpaddingの内側にしか効かない */
-  padding: 8px 8px 11px; /* よってネガティブマージンでa要素を.itemの大きさ一杯に広げて、広げた分a要素のpaddingを指定する */
-  border-radius: inherit; /* 親要素(.item)の値を継承する */
-  color: #777; /* 親要素はリンクテキストとして色が変わるので、改めて指定 */
+
+.item>a {
+  display: block;
+  /* .itemは8pxのpaddingと3pxのmargin-bottomを持つので */
+  margin: -8px -8px -11px;
+  /* a要素の効果が.itemのpaddingの内側にしか効かない */
+  padding: 8px 8px 11px;
+  /* よってネガティブマージンでa要素を.itemの大きさ一杯に広げて、広げた分a要素のpaddingを指定する */
+  border-radius: inherit;
+  /* 親要素(.item)の値を継承する */
+  color: #777;
+  /* 親要素はリンクテキストとして色が変わるので、改めて指定 */
   transition: all 0.3s;
 }
-.item > a:hover {
+
+.item>a:hover {
   box-shadow: 0 0 6px -1px rgba(0, 0, 0, 0.3);
   opacity: 0.8;
+}
+
+.item>a::before {
+  content: '';
+  height: 109px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+.item>a:hover::before {
+  opacity: 1;
+}
+.item-m>a::before {
+  height: 146px;
+}
+.item-l>a::before {
+  height: 403px;
+}
+.item>a::after {
+  content: 'MORE';
+  display: block;
+  position: absolute;
+  width: 100px;
+  font-size: 1.6rem;
+  top: 43.5px;
+  left: 150%;
+  margin-left: -50px;
+  color: #fff;
+  border: 3px solid #fff;
+  text-align: center;
+  padding: 8px;
+  letter-spacing: 1px;
+  font-family: "Trebuchet MS", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.item>a:hover::after {
+  left: 50%;
+  opacity: 1;
+}
+.item-m>a::after {
+  top: 62px;
+}
+.item-l>a::after {
+  top: 190.5px;
 }
 .item-maindish,
 .item-maindish .category::before {
   border-color: #ffc0cb;
 }
+
 .item-appetizer,
 .item-appetizer .category::before {
   border-color: #76c047;
 }
+
 .item-column,
 .item.column .category::before {
   border-color: #fff100;
 }
+
 .item-breaktime,
 .item-breaktime .category::before {
   border-color: #c1efff;
 }
+
 .header {
   padding: 25px 0;
   border-bottom: none;
   text-align: center;
 }
+
 .logo {
   width: 136px;
   height: 136px;
-  transition: -webkit-transform 0.3s; /* Safari8以下のベンダープレフィックス */
+  transition: -webkit-transform 0.3s;
+  /* Safari8以下のベンダープレフィックス */
   transition: transform 0.3s;
 }
+
 .logo:hover {
-  -webkit-transform: rotate(360deg); /* Safari8以下のベンダープレフィックス */
+  -webkit-transform: rotate(360deg);
+  /* Safari8以下のベンダープレフィックス */
   transform: rotate(360deg);
 }
+
 .nav {
   margin: 35px auto 10px;
 }
+
 .nav-item {
   margin-top: 20px;
   text-align: center;
@@ -116,17 +207,25 @@ a:link, a:visited, a:hover, a:active {
   font-weight: bold;
   font-size: 1.3rem;
 }
+
 .nav-item a {
-  display: inline-block; /* inlineだと幅を持たせられず、blockだと.nav-item分の幅まで広がってしまう */
+  display: inline-block;
+  /* inlineだと幅を持たせられず、blockだと.nav-item分の幅まで広がってしまう */
 }
+
 .nav-item a::after {
-  content: ''; /* 無いとアニメーションが発生しない */
-  display: block; /* 無いとアニメーションが発生しない */
-  width: 0; /* ホバーしてないときは下線非表示 */
+  content: '';
+  /* 無いとアニメーションが発生しない */
+  display: block;
+  /* 無いとアニメーションが発生しない */
+  width: 0;
+  /* ホバーしてないときは下線非表示 */
   margin: 8px auto 0;
   border-bottom: 1px solid #7c5119;
-  transition: width 0.3s ease-in-out; /* タイミング関数でwidthをアニメーション */
+  transition: width 0.3s ease-in-out;
+  /* タイミング関数でwidthをアニメーション */
 }
+
 .nav-item a:hover::after {
   width: 100%;
 }
