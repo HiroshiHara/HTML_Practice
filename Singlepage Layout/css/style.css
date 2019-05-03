@@ -41,3 +41,134 @@ body {
   color: #888;
   font-size: 1.6rem;
 }
+.buttons .button {
+  margin: 10px; /* スマートフォンでの表示も考慮して上下左右にmarginを取る */
+}
+.button {
+  display: inline-block;
+  width: 200px;
+  padding: 20px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #afa58d;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+.button:hover {
+  opacity: 0.9;
+}
+.button-showy {
+  background-color: #f1b400; /* 「SEND MESSAGE」用のボタン背景色 */
+}
+.about {
+  padding: 80px 30px 80px;
+  background-color: #fff;
+  color: #333;
+}
+.heading {
+  position: relative;
+  display: inline-block; /* h2要素はblock要素なので二重線が画面幅一杯に伸びでしまう */
+  padding-bottom: 15px; /* 二重線と「ABOUT ME」の間隔 */
+  margin: 30px 0 15px;
+  letter-spacing: 2px;
+  font-size: 4rem;
+}
+.heading::before,
+.heading::after {
+  content: '';
+  position: absolute;
+  border-bottom: 1px solid #999;
+  right: 0; /* h2要素の右端まで */
+  left: 0; /* h2要素の左端まで */
+  bottom: 0; /* h2要素の下部に表示 */
+}
+.heading::before {
+  bottom: 5px; /* h2要素のbeforeとafterの重なりを解消 */
+}
+.about-text {
+  margin: 30px 0;
+  line-height: 2.5;
+}
+.works {
+  background-color: #383634;
+  padding: 80px;
+}
+.works-wrapper {
+  display: table;
+  width: 100%; /* works-wrapperが画面幅一杯に広がるようにする */
+  margin-top: 60px; /* .headingのmargin-bottomが15pxなので足して75pxになる */
+  table-layout: fixed; /* table-cellの各横幅が異なる場合でも均等にする */
+}
+.work-box {
+  display: table-cell;
+  position: relative;
+}
+.work-box::after {
+  content: '';
+  position: absolute; /* position: absoluteで自動的にdisplayがblockになる */
+  width: 100%; /* work-boxと同じ幅 */
+  height: 50%; /* work-boxの50%の高さ　
+  heightを%指定が出来るのは親要素に明示的にheight指定がある場合のみだが、
+  例外的に自身にpositionプロパティがfixedかabsolute指定されている場合は可能 */
+  top: 50%; /* work-boxの上辺から50%下側 */
+  left: 0;
+  background: no-repeat;
+  background-size: 100% 100%; /* .work-box::afterと縦横同じ大きさ */
+  opacity: 0.2;
+  transform: scaleY(-1); /* 縦方向に反転して大きさ1倍 */
+}
+.work-box.tree::after {
+  background-image: url('../images/tree.jpg');
+}
+.work-box.building::after {
+  background-image: url('../images/building.jpg');
+}
+.work-box.lake::after {
+  background-image: url('../images/lake.jpg');
+}
+.work-box.sky::after {
+  background-image: url('../images/sky.jpg');
+}
+.work-box:nth-child(odd) .work-image {
+  margin: 60% 0 0;
+}
+.work-box:nth-child(odd) .work-description,
+.work-box:nth-child(odd)::after {
+  top: 0;
+}
+.work-image {
+  display: block;
+  width: 100%; /* 画像の幅をtable-cellと同じにする */
+  margin: 0 0 60%; /* 画像の大きさ分の余白を確保 */
+}
+.work-description {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  overflow-y: auto;
+}
+.work-description-inner {
+  display: table;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+.work-text {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 1.2rem;
+  line-height: 2;
+}
+.work-text .button {
+  width: 60%;
+  margin-top: 20px;
+  padding: 3px;
+}
+.button-ghost {
+  border: 1px solid #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+}
