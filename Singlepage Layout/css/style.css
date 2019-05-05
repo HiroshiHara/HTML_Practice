@@ -3,25 +3,33 @@
 html {
   font-size: 62.5%;
 }
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
 body {
-  background: #151515 url('../images/bg.png') no-repeat fixed left bottom; /* header, contact, footerの背景 fixedでスクロールしても背景画像は動かない */
+  background: #151515 url('../images/bg.png') no-repeat fixed left bottom;
+  /* header, contact, footerの背景 fixedでスクロールしても背景画像は動かない */
   background-size: cover;
-  color: #fff; /* 背景画像が取得できなかったときの保険 */
+  color: #fff;
+  /* 背景画像が取得できなかったときの保険 */
   text-align: center;
   font-size: 1.4rem;
-  font-family: Raleway, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; /* 英字のみにRalewayを適用 */
+  font-family: Raleway, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  /* 英字のみにRalewayを適用 */
 }
+
 .header {
   padding: 170px 30px 80px;
 }
+
 .site-title-sub {
   margin: 0 0 30px;
   letter-spacing: 1px;
   font-size: 2.2rem;
 }
+
 .site-title-sub::before,
 .site-title-sub::after {
   content: '';
@@ -32,18 +40,23 @@ body {
   background-color: #fff;
   vertical-align: middle;
 }
+
 .site-title {
   margin: 50px 0 40px;
   font-size: 7.6rem;
 }
+
 .site-description {
   margin-bottom: 50px;
   color: #888;
   font-size: 1.6rem;
 }
+
 .buttons .button {
-  margin: 10px; /* スマートフォンでの表示も考慮して上下左右にmarginを取る */
+  margin: 10px;
+  /* スマートフォンでの表示も考慮して上下左右にmarginを取る */
 }
+
 .button {
   display: inline-block;
   width: 200px;
@@ -55,92 +68,161 @@ body {
   letter-spacing: 1px;
   font-size: 1.2rem;
 }
+
 .button:hover {
   opacity: 0.9;
 }
+
 .button-showy {
-  background-color: #f1b400; /* 「SEND MESSAGE」用のボタン背景色 */
+  background-color: #f1b400;
+  /* 「SEND MESSAGE」用のボタン背景色 */
 }
+
 .about {
   padding: 80px 30px 80px;
   background-color: #fff;
   color: #333;
 }
+
 .heading {
   position: relative;
-  display: inline-block; /* h2要素はblock要素なので二重線が画面幅一杯に伸びでしまう */
-  padding-bottom: 15px; /* 二重線と「ABOUT ME」の間隔 */
+  display: inline-block;
+  /* h2要素はblock要素なので二重線が画面幅一杯に伸びでしまう */
+  padding-bottom: 15px;
+  /* 二重線と「ABOUT ME」の間隔 */
   margin: 30px 0 15px;
   letter-spacing: 2px;
   font-size: 4rem;
 }
+
 .heading::before,
+.heading::after {
+  content: '';
+  display: inline-block;
+  border: 1px solid;
+  height: 12px;
+  width: 12px;
+  margin: 0 10px 0;
+  vertical-align: 8px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* .headingを二重線で修飾 */
+/* .heading::before,
 .heading::after {
   content: '';
   position: absolute;
   border-bottom: 1px solid #999;
-  right: 0; /* h2要素の右端まで */
-  left: 0; /* h2要素の左端まで */
-  bottom: 0; /* h2要素の下部に表示 */
-}
+  right: 0;
+  left: 0;
+  bottom: 0;
+} */
 .heading::before {
-  bottom: 5px; /* h2要素のbeforeとafterの重なりを解消 */
+  bottom: 5px;
+  /* h2要素のbeforeとafterの重なりを解消 */
 }
+
 .about-text {
   margin: 30px 0;
   line-height: 2.5;
 }
+
 .works {
   background-color: #383634;
   padding: 80px;
 }
+
 .works-wrapper {
   display: table;
-  width: 100%; /* works-wrapperが画面幅一杯に広がるようにする */
-  margin-top: 60px; /* .headingのmargin-bottomが15pxなので足して75pxになる */
-  table-layout: fixed; /* table-cellの各横幅が異なる場合でも均等にする */
+  width: 100%;
+  /* works-wrapperが画面幅一杯に広がるようにする */
+  margin-top: 60px;
+  /* .headingのmargin-bottomが15pxなので足して75pxになる */
+  table-layout: fixed;
+  /* table-cellの各横幅が異なる場合でも均等にする */
 }
+
 .work-box {
   display: table-cell;
   position: relative;
 }
 .work-box::after {
   content: '';
-  position: absolute; /* position: absoluteで自動的にdisplayがblockになる */
-  width: 100%; /* work-boxと同じ幅 */
-  height: 50%; /* work-boxの50%の高さ　
+  position: absolute;
+  /* position: absoluteで自動的にdisplayがblockになる */
+  width: 100%;
+  /* work-boxと同じ幅 */
+  height: 50%;
+  /* work-boxの50%の高さ　
   heightを%指定が出来るのは親要素に明示的にheight指定がある場合のみだが、
   例外的に自身にpositionプロパティがfixedかabsolute指定されている場合は可能 */
-  top: 50%; /* work-boxの上辺から50%下側 */
+  top: 50%;
+  /* work-boxの上辺から50%下側 */
   left: 0;
   background: no-repeat;
-  background-size: 100% 100%; /* .work-box::afterと縦横同じ大きさ */
+  background-size: 100% 100%;
+  /* .work-box::afterと縦横同じ大きさ */
   opacity: 0.2;
-  transform: scaleY(-1); /* 縦方向に反転して大きさ1倍 */
+  transform: scaleY(-1);
+  /* 縦方向に反転して大きさ1倍 */
 }
+
 .work-box.tree::after {
   background-image: url('../images/tree.jpg');
 }
+
 .work-box.building::after {
   background-image: url('../images/building.jpg');
 }
+
 .work-box.lake::after {
   background-image: url('../images/lake.jpg');
 }
+
 .work-box.sky::after {
   background-image: url('../images/sky.jpg');
 }
+
 .work-box:nth-child(odd) .work-image {
   margin: 60% 0 0;
 }
+
 .work-box:nth-child(odd) .work-description,
 .work-box:nth-child(odd)::after {
   top: 0;
 }
+
 .work-image {
   display: block;
-  width: 100%; /* 画像の幅をtable-cellと同じにする */
-  margin: 0 0 60%; /* 画像の大きさ分の余白を確保 */
+  width: 100%;
+  /* 画像の幅をtable-cellと同じにする */
+  margin: 0 0 60%;
+  /* 画像の大きさ分の余白を確保 */
+}
+.work-box {
+  overflow: hidden;
+}
+.work-box:nth-of-type(odd) img {
+  -webkit-transform-origin: top center;
+  -ms-transform-origin: top center;
+  transform-origin: top center;
+}
+.work-box:nth-of-type(even) img {
+  -webkit-transform-origin: bottom center;
+  -ms-transform-origin: bottom center;
+  transform-origin: bottom center;
+}
+.work-box img {
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: -ms-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+}
+.work-box:hover img {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 .work-description {
   position: absolute;
@@ -151,85 +233,112 @@ body {
   height: 50%;
   overflow-y: auto;
 }
+
 .work-description-inner {
   display: table;
   width: 100%;
   height: 100%;
   padding: 20px;
 }
+
 .work-text {
   display: table-cell;
   vertical-align: middle;
   font-size: 1.2rem;
   line-height: 2;
 }
+
 .work-text .button {
   width: 60%;
   margin-top: 20px;
   padding: 3px;
 }
+
 .button-ghost {
   border: 1px solid #fff;
   background-color: rgba(255, 255, 255, 0.15);
 }
+
 .skills {
   padding: 80px 0;
   background-color: #fff;
   color: #333;
 }
+
 .skills-wrapper {
   display: table;
-  width: 80%; /* 画面幅の80% */
-  margin: 50px auto 0; /* .headingのmargin-bottomが15pxなので足して65px、中央寄せ(左右の余白がそれぞれ画面幅の10%) */
-  table-layout: fixed; /* セルの横幅を均等に */
+  width: 80%;
+  /* 画面幅の80% */
+  margin: 50px auto 0;
+  /* .headingのmargin-bottomが15pxなので足して65px、中央寄せ(左右の余白がそれぞれ画面幅の10%) */
+  table-layout: fixed;
+  /* セルの横幅を均等に */
 }
+
 .skill-box {
   display: table-cell;
 }
+
 .skill-icon {
   width: 150px;
-  height: 150px; /* i要素は本来inline要素だが、font-awesomeのCSSにより.faのdisplayプロパティにinline-blockが指定済みなのでOK */
+  height: 150px;
+  /* i要素は本来inline要素だが、font-awesomeのCSSにより.faのdisplayプロパティにinline-blockが指定済みなのでOK */
   font-size: 8rem;
   margin-bottom: 30px;
   border: 4px solid;
   border-radius: 50%;
   color: #f1b400;
-  line-height: 142px; /* height150pxから上下のborder4px*2を引いた値 */
+  line-height: 142px;
+  /* height150pxから上下のborder4px*2を引いた値 */
 }
+
 .skill-title {
   margin: 0 20px 20px;
   font-size: 2rem;
 }
+
 .skill-text {
   margin: 0 20px;
   line-height: 2;
 }
+
 .contact {
-  padding: 80px 0 150px; /* 背景画像の下の部分を活かしたいのでpadding-bottomが大きめ */
+  padding: 80px 0 150px;
+  /* 背景画像の下の部分を活かしたいのでpadding-bottomが大きめ */
 }
+
 .contact-form {
   width: 50%;
   margin: 50px auto 0;
 }
+
 .contact-form input[type=text],
 .contact-form textarea {
   display: block;
   width: 100%;
   margin-bottom: 10px;
-  padding: 15px; /* 入力枠とテキスト部分の間隔 */
+  padding: 15px;
+  /* 入力枠とテキスト部分の間隔 */
   border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 0; /* ブラウザによっては入力項目がデフォルトで角丸になっているので明治する */
+  border-radius: 0;
+  /* ブラウザによっては入力項目がデフォルトで角丸になっているので明治する */
   background-color: rgba(255, 255, 255, 0.05);
   color: #fff;
-  outline: none; /* focus時の青枠を消す */
+  outline: none;
+  /* focus時の青枠を消す */
 }
+
 .contact-form input[type=text]:focus,
 .contact-form textarea:focus {
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5) inset; /* inset = 内側 */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5) inset;
+  /* inset = 内側 */
 }
+
 .contact-form textarea {
-  height: 150px; /* textareaの幅と高さは見た目に関することなのでCSSに書くほうがスマート */
+  height: 150px;
+  /* textareaの幅と高さは見た目に関することなのでCSSに書くほうがスマート */
 }
+
 .contact-form input[type=submit] {
   display: block;
   width: 200px;
@@ -238,12 +347,15 @@ body {
   color: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 5px;
-  background-color: transparent; /* transparent = 透明 */
+  background-color: transparent;
+  /* transparent = 透明 */
   cursor: pointer;
 }
+
 .contact-form input[type=submit]:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
+
 .footer {
   padding: 12px 0;
   font-size: 1.3rem;
@@ -251,73 +363,103 @@ body {
 
 /* viewport(表示領域)の幅が768px以下の場合に適用するCSS */
 @media (max-width: 768px) {
+
   .site-title-sub::before,
   .site-title-sub::after {
     display: block;
     width: 80%;
     margin: 10px auto;
   }
+
   .site-title-sub {
     font-size: 1.7rem;
   }
+
   .site-title {
     margin-top: 35px;
     font-size: 5rem;
   }
+
   .header {
     padding-top: 60px;
   }
+
   .button:hover {
-    opacity: 1; /* スマートフォンではhoverは不要 */
+    opacity: 1;
+    /* スマートフォンではhoverは不要 */
   }
+
   .heading {
     font-size: 2.5rem;
   }
+
+  .heading::before,
+  .heading::after {
+    height: 8px;
+    width: 8px;
+    margin: 0 8px 0;
+    vertical-align: 5px;
+  }
+
   body {
     font-size: 1.3rem;
   }
+
   .about-text {
     line-height: 1.8;
   }
+
   .works-wrapper,
   .work-box {
-    display: block; /* 画面幅が狭いのでtable, table-cellを解除 */
+    display: block;
+    /* 画面幅が狭いのでtable, table-cellを解除 */
   }
+
   .work-image {
     display: none;
   }
+
   .work-description {
     position: relative;
   }
+
   .work-box::after {
     top: 0;
     height: 100%;
     background-size: cover;
     transform: none;
   }
+
   .skills-wrapper,
   .skill-box {
-    display: block; /* 画面幅が狭いのでtable, table-cellを解除 */
+    display: block;
+    /* 画面幅が狭いのでtable, table-cellを解除 */
   }
+
   .skill-icon {
     width: 100px;
     height: 100px;
     font-size: 5rem;
     line-height: 92px;
   }
+
   .skill-box {
     margin: 40px auto;
   }
+
   .skill-text {
     margin: 0;
   }
+
   .contact-form {
     width: 80%;
   }
+
   .contact {
     padding-bottom: 80px;
   }
 }
+
 /* viewport(表示領域)の幅が1024px以下の場合に適用するCSS */
 @media (max-width: 1024px) {
   body {
